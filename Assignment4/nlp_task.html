@@ -51,21 +51,21 @@
    */
   function decide_response(user_said) {
     var response;
-    var play_re = /make\sreservation\s(.+)/i;  // creating a regular expression
+    var play_re = /whats\sthesweather\s(.+)/i;  // creating a regular expression
     var play_parse_array = user_said.match(play_re) // parsing the input string with the regular expression
     
     console.log(play_parse_array) // let's print the array content to the console log so we understand 
                                   // what's inside the array.
     if (play_parse_array && state === "initial") {
-      response = "Gocha. See you " + play_parse_array[1];
-    } else if (user_said.toLowerCase().includes("make reservation") && state === "initial") {
-      response = "When do you want to reserve?";
+      response = "okay " + play_parse_array[1];
+    } else if (user_said.toLowerCase().includes("weather") && state === "initial") {
+      response = "Which city do you want the weather information for?";
       state = "reserve"
     } else if (user_said.toLowerCase().includes("bye")) {
       response = "good bye to you!";
       state = "initial"
     } else if (state === "reserve") {
-      response = "Ok. Made reservation for you" + user_said;
+      response = "The temperature is cloudy at" + user_said;
       state = "initial"
     } else {
       response = "i don't get it";
