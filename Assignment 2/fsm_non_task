@@ -1,33 +1,3 @@
-Assignment 2
-divyasree.chembrolu@cca.edu
-Due Feb 3, 6:00 PM
-Assignment 2
-
-
-assignment2.txt
-Text
-
-fsm.html
-HTML
-
-Clark, H.H. _How to talk with children_.2014.pdf
-PDF
-Your work
-RETURNED
-Files you add or create can be viewed and edited by your teacher
-
-Assignment 2 -Part 1
-Google Docs
-ADD
-CREATE
-RESUBMIT
-Private comments
-
-Maxim MakatchevFeb 6
-Hi Divyasree, thanks to the submission. I didn't find the code for your two chatbots and their FSM diagrams so the score is 60. We will go through building FSMs once again tonight to clarify any questions.
-
-Add private comment…
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -84,13 +54,13 @@ Add private comment…
    */
   function decide_response(user_said) {
     var response;
-    if (user_said.toLowerCase().includes("play") && user_said.toLowerCase().includes("michael jackson") && state === "initial") {
-      response = "ok, playing michael jackson";
-    } else if (user_said.toLowerCase().includes("play") && state === "initial") {
-      response = "Play who?";
-      state = "play_song"
-    } else if (user_said.toLowerCase().includes("michael jackson") && state === "play_song") {
-      response = "ok, playing michael jackson";
+    if (user_said.toLowerCase().includes("book") && user_said.toLowerCase().includes("uber") && state === "initial") {
+      response = "Okay, booking uber now";
+    } else if (user_said.toLowerCase().includes("uber") && state === "check availability") {
+      response = "Uber is available, would ou like me to book one?";
+      state = "uber_available"
+    } else if (user_said.toLowerCase().includes("Yes") && state === "uber_available") {
+      response = "ok, your uber has been booked";
       state = "initial"
     } else if (user_said.toLowerCase().includes("bye")) {
       response = "good bye to you!";
