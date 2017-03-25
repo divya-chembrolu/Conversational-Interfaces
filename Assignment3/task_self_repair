@@ -54,15 +54,12 @@
    */
   function decide_response(user_said) {
     var response;
-    if (user_said.toLowerCase().includes("play") && user_said.toLowerCase().includes("michael jackson") && state === "initial") {
-      response = "ok, playing michael jackson";
-    } else if (user_said.toLowerCase().includes("play") && state === "initial") {
-      response = "Play who?";
-      state = "play_song"
-    } else if (user_said.toLowerCase().includes("michael jackson") && state === "play_song") {
-      response = "ok, playing michael jackson";
-      state = "initial"
-    } else if (user_said.toLowerCase().includes("bye")) {
+    if (user_said.toLowerCase().includes("sing") && state === "initial") {
+      response = "sing what?";
+      state = "sing"
+    } else if (user_said.toLowerCase().includes("sing") && user_said.toLowerCase().includes("twinkle twinkle") && state === "initial") {
+      response = "ok, singing twinkle twinkle";
+    } else  if (user_said.toLowerCase().includes("bye")) {
       response = "good bye to you!";
       state = "initial"
     } else {
