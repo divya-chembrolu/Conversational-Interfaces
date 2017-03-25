@@ -1,0 +1,43 @@
+Assignment 2. Due Friday, February 3, 6pm.
+
+
+1. Stateful chatbots (60%)
+
+In the previous homework you chatbots were stateless: there was no memory about what happened in the previous interaction turns. In this homework you will improve your chatbots with by implementing a finite state machine model of dialogue.
+
+Study the code fsm.html and answer the following questions:
+1.1 What is the shortest possible conversation, in number of dialogue turns? (10%)
+1.2 What is the longest possible conversation? (10%)
+
+1.3 Choose a task domain for your task-oriented chatbot. Design a flow chart of the interaction. State and discuss the design principles behind your interaction design. (20%)
+1.4 Implement the flow chart in code, by modifying fsm.html into fsm-task.html (20%).
+
+1.5 Design a flow-chart for a non-task oriented version of your chatbot. State and discuss the design principles behind your interaction design. (20%)
+1.6 Implement the flow chart in the code, by modifying fsm.html into fsm-nontask.html. (20%)
+
+2. Reading: Read the following paper about grownding in communication with children (40%)
+http://web.stanford.edu/~clark/2010s/Clark,%20H.H.%20_How%20to%20talk%20with%20children_.2014.pdf
+
+Write an answer to the following questions:
+2.1 What are different ways people adapt their speech to different audiences?
+2.2 What are different ways adults and children achieve grounding in the communication?
+2.3 How could you incorporate some of the knowledge into your chatbots from the part 1 of the homework?
+
+
+3. Project proposals.
+3.1 Form a group of not more than 3 people. I recommend having a mixed expertise, for example: someone who is more familiar with coding, someone who is more familiar with interaction or industrial design, and someone else, like a business, PR, or marketing-oriented person.
+3.2 Create project proposal in a form of 10-15 slide startup pitch deck. You can find some good examples of pitch decks online. As a minimum your pitch deck should include: 
+
+- Team (including the team/project name)
+- Problem
+- Solution (concept)
+- Solution (technology)
+- Market (audience), estimated size.
+- Business model (how are you going to make money?)
+- Competition
+- Competitive advantages
+- Schedule
+
+We will discuss the choice of the problem in class, I will encorage choosing something in the product/design space that is off the beaten path. It should be feasible, however, to be done within this semester.
+
+
