@@ -64,11 +64,11 @@ function decide_response(user_said) {
 
   if (play_parse_array && state === "initial") {
     response = "ok, playing " + play_parse_array[1];
-  } else if (user_said.toLowerCase().includes("play") && state === "initial") {
-    response = "Play who?";
-    state = "play_song"
-  } else if (user_said.toLowerCase().includes("bye")) {
-    response = "good bye to you!";
+  } else if (user_said.toLowerCase().includes("hello") && state === "initial") {
+    response = "Hello! how are you doing today?";
+    state = "today"
+  } else if (user_said.toLowerCase().includes("not great")) && state === "today") {
+    response = "Oh no, How may I cheer you up today?";
     state = "initial"
   } else if (state === "play_song") {
     response = "ok, playing " + user_said;
