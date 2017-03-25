@@ -1,0 +1,30 @@
+Assignment 4
+
+1. Consider an example of a music playing chatbot, where you want to handle ALL utterances of the form:
+"Play Madonna"
+"Play Queen"
+"Play Depeche Mode"
+
+In other words, we are assuming that the user will always speak in a template "Play" + ArtistName. One way to implement this would be to have an FSM with an arc (an arrow) for every artist. 
+
+1.1 (10%) Draw such FSM for a few artists.
+
+Since every arc of an FSM gets translated into IF-THEN statement in a program, we would like to minimize the number of arcs. One way to do that is to extract the artist name from the input and pass it to the part of the code that speaks out an acknowledgement "Plahying" + ArtistName, and another part of the code that plays music. Regular expressions allow you to do that. Examine the chatbot in the attached file nlp_re.html .
+
+1.2. (10%) Draw an FSM for the chatbot in nlp_re.html. (Hint: there should be one arc accounting for all values of ArtistName, even those which we don't know will exist.)
+
+1.3 (40%) Similarly to the example in nlp_re.html, extend your task-oriented and non-task-oriented chatbots from the previous assignments with the parsing of the arguments using regular expressions. Supply both FSM sketches and the html files.
+
+
+2. Team assignment, due before the class:
+
+2.1 (20%) On Monday 2/27, every team will give a short (under 10 min) presentation on their proposed project. 
+
+2.1 (20%) Before the class, the team should:
+- have everyone on a team create a GitHub account for themselves.
+- one of the members of the team should CREATE a repository for the project in their personal account. This person will be in charge of the maintenace of the main repository of the project.
+- each of the other team members should CLONE the repository from the maintainer into their own personal GitHub accounts. The team members will be able to contribute the changes they COMMIT to their own GitHub accounts by submitting PULL REQUESTS to the repository maintainer. Study more about GitHub and the process at https://gist.github.com/blackfalcon/8428401
+- Add existing project documents to the repository. Those should at least include (1) a README.md with the project description and names of the participants and (2) slides for your Monday's project presentation.
+- Every team should send me an email with list of URLs of each of the team member's the GitHub repositories.
+
+The project's GitHub page should reflect ALL the data necessary to reproduce the project and to trace the path you took. Consider it a kind of a "biography" of your project. It is also how I will be monitoring your progress, so, keep it up to date by uploading your sketches, code, and other work as soon as you have it. I would organize the folders by dates and milestones, and have a separate folder for final deliverables.
