@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<!-- CSS Styles -->
+<style>
+  .speech {border: 1px solid #DDD; width: 300px; padding: 0; margin: 0}
+  .speech input {border: 0; width: 240px; display: inline-block; height: 35px; text-indent: 20px; font-size: medium;}
+  .speech img {float: right; width: 40px }
+  form { width: 300px; margin: 200px auto;}
+</style>
+
+
+<!-- HTML5 Speech Recognition API -->
+<script>
+  function startDictation() {
+
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+      var recognition = new webkitSpeechRecognition();
+
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.lang = "en-US";
+      recognition.start();
+
+      recognition.onresult = function(e) {
+        document.getElementById('transcript').value
+                                 = e.results[0][0].transcript;
+        var user_said = e.results[0][0].transcript;
+        recognition.stop();
+
+        var bot_response = decide_response(user_said)
+        speak(bot_response)
+        //`document.getElementById('labnol').submit();
+      };
+
+      recognition.onerror = function(e) {
+        recognition.stop();
+      }
+
+    }
+  }
+
+  /* decide what to say.
+   * input: transcription of what user said
+   * output: what bot should say
+   */
+  function decide_response(user_said) {
+    var response;
+    if (user_said.toLowerCase().includes("hello")) {
+      response = "hello, how are you today";
+    } else if (user_said.toLowerCase().includes("bye")) {
+      response = "good bye!";
+    } else if (user_said.toLowerCase().includes("your name")) {
+        response = "My name is michael";
+    } else if (user_said.toLowerCase().includes("what is the time")) {
+        response = "the time is 6:25pm";
+    } else if (user_said.toLowerCase().includes("how are you today")) {
+        response = "I am great, Thank you";
+    } else  if (user_said.toLowerCase().includes("value of pi")) {
+        response = "The value of pi is approximately 3.141592653589793238462643383279502884197169399375105820974944592307816406286 208998628034825342117067982148086513282306647093844609550582231725359408128481 1174502841027019385211055596446";
+    } else if (user_said.toLowerCase().includes("weather today")) {
+        response = "the weather in San Francisco today is 15 degrees with a chance of rain";
+    } else if (user_said.toLowerCase().includes("read me a book")) {
+        response = "continuing the reading of your ebook , Freakonomics";
+    } else {
+      response = "i don't understand what you just said";
+    }
+    return response;
+  }
+
+  /*
+   *speak out some text
+   */
+  function speak(text, callback) {
+    var u = new SpeechSynthesisUtterance();
+    u.text = text;
+    u.lang = 'en-US';
+
+    u.onend = function () {
+        if (callback) {
+            callback();
+        }
+    };
+
+    u.onerror = function (e) {
+        if (callback) {
+            callback(e);
+        }
+    };
+
+    speechSynthesis.speak(u);
+  }
+
+</script>
+
+</head>
+
+<body>
+
+<!-- Search Form -->
+<form id="labnol" method="get" action="https://www.google.com/search">
+  <div class="speech">
+    <input type="text" name="q" id="transcript" placeholder="Speak" />
+    <img onclick="startDictation()" src="http://i.imgur.com/l5S4LZ2.png" />
+  </div>
+</form>
+
+
+</body>
+
+</html>
