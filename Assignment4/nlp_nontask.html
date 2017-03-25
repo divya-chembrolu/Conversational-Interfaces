@@ -57,14 +57,14 @@
     console.log(play_parse_array) // let's print the array content to the console log so we understand 
                                   // what's inside the array.
     if (play_parse_array && state === "initial") {
-      response = "Happy " + play_parse_array[1] + "day";
+      response = "play " + play_parse_array[1] + "day";
     } else if (user_said.toLowerCase().includes("date") && state === "initial") {
-      response = "What holiday is today?";
-      state = "celebrate"
+      response = "What song?";
+      state = "beyonce"
     } else if (user_said.toLowerCase().includes("bye")) {
       response = "good bye to you!";
       state = "initial"
-    } else if (state === "celebrate") {
+    } else if (state === "beyonce") {
       response = "Happy" + user_said + "day";
       state = "initial"
     } else {
