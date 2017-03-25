@@ -54,13 +54,13 @@
    */
   function decide_response(user_said) {
     var response;
-    if (user_said.toLowerCase().includes("book") && user_said.toLowerCase().includes("uber") && state === "initial") {
-      response = "Okay, booking uber now";
-    } else if (user_said.toLowerCase().includes("uber") && state === "check availability") {
-      response = "Uber is available, would ou like me to book one?";
-      state = "uber_available"
-    } else if (user_said.toLowerCase().includes("Yes") && state === "uber_available") {
-      response = "ok, your uber has been booked";
+    if (user_said.toLowerCase().includes("tell") && user_said.toLowerCase().includes("joke") && state === "initial") {
+      response = "Okay, here is a joke. Dracula didn’t have many friends because he was a real pain in the neck";
+    } else if (user_said.toLowerCase().includes("tell me something") && state === "initial") {
+      response = "would you like me to tell you a joke?";
+      state = "joke"
+    } else if (user_said.toLowerCase().includes("yes") && state === "uber_available") {
+      response = "Okay, here is a joke. Did you know why Dracula didn’t have many friends? because he was a real pain in the neck";
       state = "initial"
     } else if (user_said.toLowerCase().includes("bye")) {
       response = "good bye to you!";
