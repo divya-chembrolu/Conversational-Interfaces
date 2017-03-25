@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<!-- CSS Styles -->
+<style>
+  .speech {border: 1px solid #DDD; width: 300px; padding: 0; margin: 0}
+  .speech input {border: 0; width: 240px; display: inline-block; height: 35px; text-indent: 20px; font-size: medium;}
+  .speech img {float: right; width: 40px }
+  form { width: 300px; margin: 200px auto;}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- HTML5 Speech Recognition API -->
+<script>
+  function startDictation() {
+
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+      var recognition = new webkitSpeechRecognition();
+
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.lang = "en-US";
+      recognition.start();
+
+      recognition.onresult = function(e) {
+        document.getElementById('transcript').value
+                                 = e.results[0][0].transcript;
+        var user_said = e.results[0][0].transcript;
+        recognition.stop();
+
+        var bot_response = decide_response(user_said)
+        speak(bot_response)
+        //`document.getElementById('labnol').submit();
+      };
+
+      recognition.onerror = function(e) {
+        recognition.stop();
+      }
+
+    }
+  }
+
+  /* decide what to say.
+   * input: transcription of what user said
+   * output: what bot should say
+   */
+  function decide_response(user_said) {
+    var response;
+    if (user_said.toLowerCase().includes("hello")) {
+      response = "Hello There";
+    } else if (user_said.toLowerCase().includes("bye")) {
+      response = "good bye!";
+    } else if (user_said.toLowerCase().includes("sorry")) {
+        response = "Its Alright, Honey!";
+    } else if (user_said.toLowerCase().includes("your name")) {
+        response = "My name is none of your business";
+    } else if (user_said.toLowerCase().includes("how are you today")) {
+        response = "I am great, Thank you";
+    } else if (user_said.toLowerCase().includes("tell me a joke")) {
+        response = "Okay, here is a joke. Dracula didn’t have many friends because he was a real pain in the neck";
+    } else if (user_said.toLowerCase().includes("sing to me")) {
+        response = "I do not sing well but I can play you a song";
+    } else if (user_said.toLowerCase().includes("i am bored")) {
+        response = "Shall I read you a story";
+    } else if (user_said.toLowerCase().includes("what is your favourite colour")) {
+        response = "my favourite colour is white as it encompases all the colours of the rainbow";
+    } else if (user_said.toLowerCase().includes("tell me a short story")) {
+        response = "she travelled far and wide looking for love. The universe waited patiently for her to come back and look across the street";
+    } else if (user_said.toLowerCase().includes("how intelligent are you")) {
+        response = "I am as intelligent as you want me to be";
+    } else if (user_said.toLowerCase().includes("which is my favourite song")) {
+        response = "the most played song in your library is Hello by adele. Is this your favourite song";
+    } else {
+      response = "i don't understand what you just said";
+    }
+    moveSkull(response);
+    return response;
+  }
+
+   function moveSkull(response) {
+    var res = response.split(" ");
+    var count_array = new Array();
+    for (var j = 0; j < res.length; j++) {
+        count_array.push(res[j].length);
+    }
+    for (var i = 0; i < count_array.length; i++) {
+        $.post("https://api.particle.io/v1/devices/1b002d000f47353136383631/servo?args=%22" + count_array[i] + "%22&access_token=d6ef0cd21e3fcd49b115b77a089a22a090890a21");
+    }
+    return 1;
+  }
+
+
+  /*
+   *speak out some text
+   */
+  function speak(text, callback) {
+    var u = new SpeechSynthesisUtterance();
+    u.text = text;
+    u.lang = 'en-US';
+
+    u.onend = function () {
+        if (callback) {
+            callback();
+        }
+    };
+
+    u.onerror = function (e) {
+        if (callback) {
+            callback(e);
+        }
+    };
+
+    speechSynthesis.speak(u);
+  }
+
+</script>
+
+</head>
+
+<body>
+
+<!-- Search Form -->
+<form id="labnol" method="get" action="https://www.google.com/search">
+  <div class="speech">
+    <input type="text" name="q" id="transcript" placeholder="Speak" />
+    <img onclick="startDictation()" src="//i.imgur.com/l5S4LZ2.png" />
+  </div>
+</form>
+
+
+</body>
+
+</html>
