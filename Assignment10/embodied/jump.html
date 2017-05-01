@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Animated conversation agent</title>
+    <!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+  </head>
+  <body background="http://orig15.deviantart.net/aebc/f/2008/306/a/4/starry_sky_stock_by_budgie.jpg">
+    <div class="elements">
+      <img class="sign" src="sign.png">
+      <h1 class="heading">
+        I am a Space Cat! My name is Momo!
+              </h1>
+      <div id="canvasDiv"></div>
+
+      <!-- Search Form -->
+      <form id="labnol" method="get" action="https://www.google.com/search">
+        <div class="speech">
+          <table>
+            <tr>
+              <td>
+                <input type="text" name="q" id="transcript" placeholder="Say Hello!" />
+              </td>
+              <td>
+                <img onclick="startDictation()" src="//i.imgur.com/cHidSVu.gif" />
+              </td>
+            </tr>
+          </table>
+        </div>
+      </form>
+    </div>
+
+
+    <script type="text/javascript" src="nonverbal.js"></script>
+    <script type="text/javascript" src="verbal.js"></script>
+    <script type="text/javascript">
+    	prepareCanvas(document.getElementById("canvasDiv"), 490, 300);
+		  document.getElementById("canvasDiv").onmousedown = function() { 
+			 jump(); 
+      }
+    </script>
+    <style>
+    #canvasDiv {
+      position: relative;
+      left: -250px;
+    }
+
+    .sign {
+      height: 350px;
+      position: relative;
+      left: -250px;
+    }
+    .heading {
+      width: 500px;
+      position: absolute;
+      left: -175px;
+      top: 5px;
+      color: white;
+      font-family: monospace;
+      font-size: 50px;
+      text-align: center;
+    }
+
+    .elements {
+    width: 100px;
+    height: 100px;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+  }
+</style>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+assignment answers
+
+1. Conversational embodied character
+
+We are moving towards studying non-verbal behaviors. The example code for the converstional embodied character that we will be working with is located at:
+
+https://github.com/maxipesfix/coversational_interfaces_spring_2017/tree/master/embodied
+
+(Note the new location.)
+
+Clone the repository or copy the contents of the "embodied" directory to your computer. Study the code:
+- verbal.js you contains the familar code that performs speech recognition and finite state machine-based dialogue.
+- nonverbal.js contains the code that animates the character.
+
+You can find more about the way the animated character is built by reading its creator's tutorial:
+http://www.williammalone.com/articles/create-html5-canvas-javascript-game-character/1/
+
+To help you understand the code:
+
+1.1 Replace the graphics with your own. Make your own animated character and give it a name.
+A - Divya is working on this
+
+1.2 Find where in verbal.js the following behaviors are called:
+- jump - Line number 33 in verbal.js
+- breath rate increase/decrease - line number 16 and line number 32 in verbal.js
+- blink rate increase/decrease - line number 15 in verbal.js
+
+Hint: Look for the comments saying "Nonverbal..."
+
+Find in nonverbal.js the implementation of:
+- jump - line number 207 in nonverbal.js
+- breath rate increase/decrease - line number 179 in nonverbal.js
+- blink rate increase/decrease - line number 192 in nonverbal.js
+- eye color setting - line number 160 in nonverbal.js
+
+1.3 Edit the behaviors in verbal.js and nonverbal.js so that the eyes of the character are RED when the character is listening.
+
+1.4. Add your latest task or non-task oriented chatbot code from the previous homework into verbal.js. Make sure it works with the animated character.
+
+1.4 Submit your work to your on directory on github, called hw6.
+
+
+2. Team assignment: Prepare a demo of your project work so far to be presented next Monday. The demo should ideally include a prototype that works: it can be a very small peice of your final product, but it should do something.
+assignment6.txt
+Displaying assignment6.txt.
