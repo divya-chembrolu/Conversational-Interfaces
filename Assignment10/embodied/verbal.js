@@ -56,17 +56,21 @@ function startDictation() {
  */
 function decide_response(user_said) {
   var response;
-  var play_re = /play\s(.+)/i;  // creating a regular expression
-  var play_parse_array = user_said.match(play_re) // parsing the input string with the regular expression
+  var fact_re = /fact\s(.+)/i;  // creating a regular expression
+  var fact_parse_array = user_said.match(fact_re) // parsing the input string with the regular expression
   
-  console.log(play_parse_array) // let's print the array content to the console log so we understand 
+  console.log(fact_parse_array) // let's print the array content to the console log so we understand 
                                 // what's inside the array.
 
-  if (play_parse_array && state === "initial") {
-    response = "ok, playing " + play_parse_array[1];
+  if (user_said.toLowerCase().includes("yes") && state === "fact0") {
+    response = "Okay, here is a fact. There are more underwater living organisms than organisms on land";
+    state = "fact1"
+  } else if (fact_parse_array && state === "fact1") {
+    response = "The adult human skeleton has 206 bones. The smallest is the stapes or stirrup, the innermost of three bones in the middle ear; the femur (thighbone) is the longest and strongest, and the tibia in the lower leg is the second largest in the human skeleton.";
+    state = "fact2"
   } else if (user_said.toLowerCase().includes("hello") && state === "initial") {
-    response = "Hello! how are you doing today?";
-    state = "today"
+    response = "Hello! Would you like a science fact? ";
+    state = "fact0"
   } else if (user_said.toLowerCase().includes("are you a cat") && state === "initial") {
     response = "Yes I am a cat. but i am not an ordinary cat, I am a space cat";
     state = "today"
