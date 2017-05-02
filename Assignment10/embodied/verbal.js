@@ -72,7 +72,7 @@ function decide_response(user_said) {
     response = "The adult human skeleton has 206 bones. The smallest is the stapes or stirrup, the innermost of three bones in the middle ear; the femur (thighbone) is the longest and strongest, and the tibia in the lower leg is the second largest in the human skeleton.";
     state = "fact2";
   } else if (fact_parse_array && state === "fact2") {
-    response = "Female sharks have thicker skins than males. Scientists think it's because males have this odd tendency to bite females while mating. Despite this, sharks sometimes still gather in large quantities.";
+    response = "Female sharks have thicker skins than males. Scientists think it's because males have this odd tendency to bite females while mating. Would you like to know another one?";
     state = "fact3";
   } else if (user_said.toLowerCase().includes("yes") && state === "fact3") {
     response = "The ocean is 12,080.7 feet (3,682.2 meters) deep on average. That's about eight Empire State Buildings, stacked one on top of the other.";
@@ -80,6 +80,8 @@ function decide_response(user_said) {
   } else if (user_said.toLowerCase().includes("no") && state === "fact3") {
     response = "Bye";
     state = "initial";
+  } else if (user_said.toLowerCase().includes("cool") && state != "initial") {
+    response = "Glad you appreciate it";
   } else {
     response = "i don't get it";
   }
