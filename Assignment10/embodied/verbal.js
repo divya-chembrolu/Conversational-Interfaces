@@ -65,7 +65,7 @@ function decide_response(user_said) {
   if (user_said.toLowerCase().includes("hello") && state === "initial") {
     response = "Hello! Would you like a science fact? ";
     state = "fact0";
-  } else if (user_said.toLowerCase().includes("yes") && state === "fact0") {
+  } else if ((user_said.toLowerCase().includes("yes") || fact_parse_array) && state === "fact0") {
     response = "Okay, here is a fact. There are more underwater living organisms than organisms on land";
     state = "fact1";
   } else if (fact_parse_array && state === "fact1") {
